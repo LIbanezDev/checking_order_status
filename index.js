@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./server');
 const axios = require('axios');
 const { clearInterval } = require('timers');
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -7,6 +8,7 @@ const originNumber = process.env.TWILIO_NUMBER;
 const destinationNumber = process.env.MY_NUMBER;
 const apiUrl = process.env.API_URL;
 const client = require('twilio')(accountSid, authToken);
+
 
 const mainLoop = setInterval( async () => {
     const {data} = await axios.get(apiUrl);
